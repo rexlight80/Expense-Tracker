@@ -3,13 +3,14 @@ const dotenv = require("dotenv");
 const colors=require("colors");
 const app = express();
 const morgan = require("morgan");
-const transactions=require("./routes/transactions");
-const connectDB=require("./config/db");
-const path=require('path')
+const transactions = require("./routes/transactions");
+const connectDB = require("./config/db");
+const path = require('path');
+const cors = require('cors'); 
 
 dotenv.config({path:"./config/config.env"});
 connectDB();
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/transactions',transactions);
